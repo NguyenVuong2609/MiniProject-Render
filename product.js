@@ -136,7 +136,7 @@ function addToCart(id) {
     for (let i = 0; i < myProductCart.length; i++) {
       let a = parseInt(myProductCart[i].quantity);
 
-    //   TODO TH1: Nếu mặt hàng này đã có trong giỏ //
+    //   TODO TH1: Nếu mặt hàng này đã có trong giỏ (Cộng số lượng) //
       if (id == myProductCart[i].id) {
         flag = true;
         // myProductCart[i].quantity = ++a;
@@ -155,3 +155,4 @@ function addToCart(id) {
     }
   }
 }
+
