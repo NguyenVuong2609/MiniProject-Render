@@ -163,20 +163,52 @@
 // let result = hours + " hours " + ":" + minutes + " minutes " + ":" + seconds + " seconds";
 // console.log(result);
 
-// ! Bài 11 //
-let oldNum = parseInt(prompt("Nhập vào số tiêu thụ điện cũ"));
-let newNum = parseInt(prompt("Nhập vào số tiêu thụ điện mới"));
-let paidNum = newNum - oldNum;
-let payment = 0;
-const subscriber = 10000;
+//? Bài 10 //
+let num = parseInt(prompt("Nhập vào 1 số:"));
+let totalDivisor = 0;
+let checkNum;
+    if (num < 2) {
+        console.log(num," không phải là số nguyên tố.");
+      } else if (num == 2) {
+        console.log(num," là số nguyên tố.");
+      } else {
+        for (let i = 2; i < num; i++) {
+          checkNum = num % i;
+          if (checkNum == 0) {
+            console.log(num," không phải là số nguyên tố.");
+            break;
+          }
+        }
+        if (checkNum != 0) {
+          console.log(num," là số nguyên tố.");
+        }
+      }
 
-if (paidNum <= 50) {
-  payment = paidNum * 700 + subscriber;
-} else if (paidNum <= 100) {
-  payment = 50 * 700 + (paidNum - 50) * 900 + subscriber;
-} else if (paidNum <= 150) {
-  payment = 50 * 700 + 50 * 900 + (paidNum - 100) * 1100 + subscriber; 
-} else {
-  payment = 50 * 700 + 50 * 900 + 50 * 1100 + (paidNum - 150) * 1300 + subscriber;
+for (i = 1; i < num; i++) {
+  if (num % i == 0) {
+    totalDivisor += i;
+  }
 }
-console.log("Tiền điện bạn cần phải trả là: " + payment + "VNĐ");
+if (totalDivisor == num && num != 0) {
+  console.log("Đây là số hoàn hảo.");
+} else {
+  console.log("Đây không phải là số hoàn hảo.");
+}
+
+// ! Bài 11 //
+// let oldNum = parseInt(prompt("Nhập vào số tiêu thụ điện cũ"));
+// let newNum = parseInt(prompt("Nhập vào số tiêu thụ điện mới"));
+// let paidNum = newNum - oldNum;
+// let payment = 0;
+// const subscriber = 10000;
+
+// if (paidNum <= 50) {
+//   payment = paidNum * 700 + subscriber;
+// } else if (paidNum <= 100) {
+//   payment = 50 * 700 + (paidNum - 50) * 900 + subscriber;
+// } else if (paidNum <= 150) {
+//   payment = 50 * 700 + 50 * 900 + (paidNum - 100) * 1100 + subscriber;
+// } else {
+//   payment = 50 * 700 + 50 * 900 + 50 * 1100 + (paidNum - 150) * 1300 + subscriber;
+// }
+// console.log("Tiền điện bạn cần phải trả là: " + payment + "VNĐ");
