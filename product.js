@@ -60,7 +60,7 @@ function renderProduct() {
   data = `
     <div class="header col-12">
           <div class="col-3" id="shop">
-            <a href="/Pages/index.html">CUTI<span>SHOP</span></a>
+            <a href="/index.html">CUTI<span>SHOP</span></a>
           </div>
           <div class="menu col-6">
             <ul class="ul-center">
@@ -156,3 +156,31 @@ function addToCart(id) {
   }
 }
 
+let search = document.getElementById("search");
+search.addEventListener('change', ()=>{
+  let searchProduct = JSON.parse(localStorage.getItem("listProduct"));
+  let list = ""
+  for (let i=0; i<searchProduct.length; i++) {
+    if (searchProduct[i].name.toLowerCase().indexOf(search.value.toLowerCase()) != -1 || searchProduct[i].price == search.value) {
+        list += `<div class="product col-4">
+            <img src="${searchProduct[i].img}" alt="">
+            <p>${searchProduct[i].name}</p>
+            <label for="price">Price: ${searchProduct[i].price}</label><br>
+            <input type="number" value="0" id="input${searchProduct[i].id}">
+            <i onclick=addToCart(${searchProduct[i].id}) class="fa-solid fa-cart-shopping add-cart"></i>
+            </div>
+            `;
+            document.getElementById("body-content").innerHTML = list;
+    }
+  }
+})
+
+//? Ô search //
+search.addEventListener('click',()=>{
+  if (search.value == ""){
+    search.placeholder = "Name of product or Price...";
+  }
+})
+search.addEventListener('mouseout', ()=>{
+  search.placeholder = "Search..."; 
+})
