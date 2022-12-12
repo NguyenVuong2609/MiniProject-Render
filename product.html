@@ -27,7 +27,7 @@
             text-align: center;
             width: 60%;
             position: absolute;
-            left: 25%;
+            left: 20%;
             font-size: 20px;
         }
         table {
@@ -38,34 +38,42 @@
         table input {
             width: 250px;
         }
+        .button input{
+            border-radius: 8px;
+            box-shadow: 1px 1px ;
+        }
+        .button input:hover{
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div class="header" id="header"></div>
     <div class="bodyContent" id="bodyContent">
-        <table>
+        <!-- <table>
             <tr>
                 <td><label for="">Product's Name:</label></td>
-                <td><input type="text" placeholder="Product's name"></td>
+                <td><input type="text" placeholder="Product's name" class="inputInfo"></td>
             </tr>
             <tr>
                 <td><label for="">Price:</label></td>
-                <td><input type="number" placeholder="Price"></td>
+                <td><input type="number" placeholder="Price" class="inputInfo"></td>
             </tr>
             <tr>
                 <td><label for="">Picture:</label></td>
-                <td><input type="text" placeholder="Link"></td>
+                <td><input type="text" placeholder="Link" class="inputInfo"></td>
             </tr>
             <tr>
                 <td><label for="">ID:</label></td>
                 <td id="productID"></td>
             </tr>
-            <tr>
-                <td><input type="button"></td>
+            <tr class="button">
+                <td><input type="button" value="Add"></td>
+                <td><input type="button" value="Delete"></td>
             </tr>
-        </table>
+        </table> -->
     </div>
     <!-- <img src="/IMG/lambo-1.jpg" alt=""> -->
 </body>
-<!-- <script src="/addProduct.js"></script> -->
+    <script src="/addProduct.js"></script>
 </html>

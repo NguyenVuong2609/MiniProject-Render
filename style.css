@@ -211,7 +211,22 @@ i {
   #pay-money:hover {
     background-color: #ffb0af;
   }
+  .slide {
+    margin-top: 80px;
+    text-align: center;
+  }
+  #slideShow img {
+    width: 800px;
+    border-radius: 10px;
+    border: 2px solid darkorange;
+  }
 
+ 
+ 
+ 
+ 
+ 
+ 
   @media only screen and (max-width: 768px) {
     .menu {
       display: none;
@@ -232,14 +247,9 @@ i {
     .product {
       width: 100%;
     }
-  }
-
-  .slide {
-    margin-top: 80px;
-    text-align: center;
-  }
-  #slideShow img {
-    width: 800px;
-    border-radius: 10px;
-    border: 2px solid darkorange;
+    #slideShow img {
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid darkorange;
+    }
   }

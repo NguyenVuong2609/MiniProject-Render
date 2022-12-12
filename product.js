@@ -181,7 +181,7 @@ search.addEventListener("change", () => {
   }
 });
 
-//? Ô search //
+//? Ô search: nội dung//
 search.addEventListener("click", () => {
   if (search.value == "") {
     search.placeholder = "Name of product or Price...";
