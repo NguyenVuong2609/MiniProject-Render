@@ -194,10 +194,11 @@ i {
     position: absolute;
     color: white;
     background-color: #ff8380;
-    width: 35%;
+    border-radius: 8px;
+    width: 25%;
     z-index: 10;
     top: 250;
-    right: 0;
+    right: 50px;
     align-items: center;
   }
   #deleteCart,
@@ -221,11 +222,15 @@ i {
     border: 2px solid darkorange;
   }
 
+  #tableCart {
+    padding: 5px;
+  }
  #show-cart td img {
   width: 100px;
  }
  #show-cart td,tr {
   border: 1px solid white;
+  border-radius: 6px;
   width: 60px;
  }
  
