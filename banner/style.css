@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+    margin-top: 50px;
+    font-size: 20px;
+    text-align: center;
+}
+span {
+    color: #ffcc5c;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.clock {
+    padding: 30px;
+    border: 2px solid #ff6f69;
+    border-radius: 10px;
+    color: #ff6f69;
+    font-size: 40px;
+    background-color: #96ceb4 ;
+}
