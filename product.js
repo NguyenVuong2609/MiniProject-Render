@@ -47,7 +47,7 @@ localStorage.setItem("listProduct", JSON.stringify(array));
 function renderProduct() {
   let list = "";
   let data = "";
-  
+
   for (let i = 0; i < array.length; i++) {
     list += `<div class="product col-4">
         <img src="${array[i].img}" alt="">
@@ -97,9 +97,12 @@ function renderProduct() {
               </li>
               <li>
                 <div id="cart-menu">
-                  <div id="show-cart"></div>
+                  <div id="show-cart">
+                  <table id="tableCart">
+                  </table>
+                  </div>
                   <div id="totalCart"></div>
-                  <input type="button" value="Delete Cart" id="close-cart" />
+                  <input type="button" value="Delete Cart" id="deleteCart" />
                   <input type="button" value="Pay Money" id="pay-money" />
                 </div>
               </li>
@@ -107,7 +110,7 @@ function renderProduct() {
           </div>
         </div>`;
   document.getElementById("header").innerHTML = data;
-  setInterval(bannerShow,2000);
+  // setInterval(bannerShow, 2000);
   document.getElementById("body-content").innerHTML = list;
 }
 renderProduct();
@@ -143,6 +146,7 @@ function addToCart(id) {
         // myProductCart[i].quantity = ++a;
         a += parseInt(document.getElementById("input" + id).value);
         myProductCart[i].quantity = a;
+        document.getElementById("input" + id).value = 0;
         localStorage.setItem("myCart", JSON.stringify(myProductCart));
         break;
       } else {
@@ -151,10 +155,15 @@ function addToCart(id) {
       }
     }
     if (flag == false) {
+      let a = parseInt(cart[id - 1].quantity)
+      a += parseInt(document.getElementById("input" + id).value);
+      cart[id - 1].quantity = a;
       myProductCart.push(cart[id - 1]);
+      document.getElementById("input" + id).value = 0;
       localStorage.setItem("myCart", JSON.stringify(myProductCart));
     }
   }
+  showCart();
 }
 
 //! Ô tìm kiếm //
@@ -191,10 +200,9 @@ search.addEventListener("mouseout", () => {
   search.placeholder = "Search...";
 });
 
-
 //? SlideShow //
 let count = 0;
-function bannerShow(){
+function bannerShow() {
   let arraySlideShow = [
     "/IMG/anh1.png",
     "/IMG/ferrari.jpg",
@@ -206,5 +214,56 @@ function bannerShow(){
   if (count == 3) {
     count = 0;
   }
-  document.getElementById('slideShow').innerHTML = dataSlide;
+  document.getElementById("slideShow").innerHTML = dataSlide;
 }
+
+//! Hiển thị giỏ hàng //
+//? Hide - Show //
+let btnCart = document.getElementById("cart-button");
+btnCart.addEventListener("click", () => {
+  let visible = document.getElementById("cart-menu");
+  let cart = localStorage.getItem("myCart");
+  if (visible.style.visibility == "") {
+    visible.style.visibility = "visible";
+  } else {
+    visible.style.visibility =
+      visible.style.visibility == "hidden" ? "visible" : "hidden";
+  }
+  if (cart != "") {
+    showCart();
+  }
+});
+
+//? Push product to table //
+function showCart() {
+  let cart = JSON.parse(localStorage.getItem("myCart"));
+  let dataProduct = `<tr>
+  <td>Num</td>
+  <td>Picture</td>
+  <td>Name</td>
+  <td>Price</td>
+  <td>Quantity</td>
+  </tr>
+  `;
+  for (let i = 0; i < cart.length; i++) {
+    dataProduct += `
+    <tr>
+    <td>${i + 1}</td>
+    <td><img src="${cart[i].img}" alt=""></td>
+    <td>${cart[i].name}</td>
+    <td>${cart[i].price}</td>
+    <td>${cart[i].quantity}</td>
+    </tr>
+    `;
+  }
+  document.getElementById("tableCart").innerHTML = dataProduct;
+}
+
+//* Hiển thị tổng sản phẩm //
+
+//! Xóa giỏ hàng //
+let btnDelete = document.getElementById("deleteCart");
+btnDelete.addEventListener("click", () => {
+  localStorage.removeItem("myCart");
+  document.getElementById("tableCart").innerHTML = "";
+});
