@@ -265,4 +265,7 @@ i {
     #cart-menu {
       width: 60%;
     }
+    #tableCart td,tr {
+      font-size: 12px;
+    }
   }
