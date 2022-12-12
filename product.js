@@ -68,7 +68,7 @@ function renderProduct() {
               <li><a href="#">Shop</a></li>
               <li><a href="#">About</a></li>
               <li><a href="#">Services</a></li>
-              <li><a href="/Pages/favourite.html">Favourite</a></li>
+              <li><a href="#">Favourite</a></li>
             </ul>
           </div>
           <div class="avatar col-3">
@@ -325,4 +325,6 @@ let btnDelete = document.getElementById("deleteCart");
 btnDelete.addEventListener("click", () => {
   localStorage.removeItem("myCart");
   document.getElementById("tableCart").innerHTML = "";
+  document.getElementById("small").innerHTML = "";
+  document.getElementById("totalCart").innerHTML = "";
 });
