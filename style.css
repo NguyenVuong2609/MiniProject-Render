@@ -145,7 +145,7 @@ i {
   height: 40px;
   line-height: 42px;
   padding: 0;
-  margin-left: 10px;
+  margin-left: 15px;
   border: none;
   background: #ff8380;
   background: linear-gradient(0deg, #ff8380 0%, rgba(251, 75, 2, 1) 100%);
@@ -167,8 +167,9 @@ i {
 }
 
 .container .product img {
-  max-width: 100%;
+  width: 350px;
   height: 200px;
+  max-width: 100%;
 }
 
 .product {
@@ -195,7 +196,7 @@ i {
     color: white;
     background-color: #ff8380;
     border-radius: 8px;
-    width: 25%;
+    width: 30%;
     z-index: 10;
     top: 250;
     right: 50px;
@@ -219,7 +220,7 @@ i {
   #slideShow img {
     width: 800px;
     border-radius: 10px;
-    border: 2px solid darkorange;
+    border: 2px solid #ff8380;
   }
 
   #tableCart {
