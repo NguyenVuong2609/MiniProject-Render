@@ -126,9 +126,11 @@ function addToCart(id) {
     listProduct = [];
     for (let i = 0; i < cart.length; i++) {
       let count = parseInt(cart[i].quantity);
-      if (cart[i].id == id) {
-        count += parseInt(document.getElementById("input" + id).value);
-        cart[i].quantity = count;
+      if (cart[i].id == id ) {
+        if (parseInt(document.getElementById("input" + id).value)>0){
+          count += parseInt(document.getElementById("input" + id).value);
+          cart[i].quantity = count;
+        }
         listProduct.push(cart[i]);
         document.getElementById("input" + id).value = 0;
         localStorage.setItem("myCart", JSON.stringify(listProduct));
@@ -146,7 +148,9 @@ function addToCart(id) {
       if (id == myProductCart[i].id) {
         flag = true;
         // myProductCart[i].quantity = ++a;
-        a += parseInt(document.getElementById("input" + id).value);
+        if (parseInt(document.getElementById("input" + id).value) > 0) {
+          a += parseInt(document.getElementById("input" + id).value);
+        }
         myProductCart[i].quantity = a;
         document.getElementById("input" + id).value = 0;
         localStorage.setItem("myCart", JSON.stringify(myProductCart));
@@ -158,8 +162,10 @@ function addToCart(id) {
     }
     if (flag == false) {
       let a = parseInt(cart[id - 1].quantity);
-      a += parseInt(document.getElementById("input" + id).value);
-      cart[id - 1].quantity = a;
+      if (parseInt(document.getElementById("input" + id).value)>0){
+        a += parseInt(document.getElementById("input" + id).value);
+        cart[id - 1].quantity = a;
+      }
       myProductCart.push(cart[id - 1]);
       document.getElementById("input" + id).value = 0;
       localStorage.setItem("myCart", JSON.stringify(myProductCart));
@@ -259,7 +265,7 @@ function footer() {
       </div>
     </div>
 `;
-      document.getElementById('footer').innerHTML = data;
+  document.getElementById("footer").innerHTML = data;
 }
 
 //! Hiển thị giỏ hàng //

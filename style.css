@@ -182,6 +182,9 @@ i {
   cursor: pointer;
   box-shadow: 5px 5px #ff8380;
 }
+.product input {
+  width: 50px;
+}
 
 .add-cart {
   margin-right: 10px;
