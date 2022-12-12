@@ -5,14 +5,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        table {
+            margin-top: 50px;
+            align-items: center;
+            /* position: absolute; */
+        }
+        .header {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            font-size: 30px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .bodyContent {
+            text-align: center;
+            width: 60%;
+            position: absolute;
+            left: 25%;
+            font-size: 20px;
+        }
+        table {
+            border: 1px solid black;
+            width: 100%;
+            height: 100%;
+        }
+        table input {
+            width: 250px;
+        }
+    </style>
 </head>
 <body>
-    <label for="">Tên sản phẩm</label>
-    <input type="text" placeholder="product's name">
-    <label for="">Đơn giá</label>
-    <input type="number" placeholder="price">
-    <label for="">Ảnh sản phẩm</label>
-    <input type="text">
-    <img src="/IMG/sp1.jpg" alt="">
+    <div class="header" id="header"></div>
+    <div class="bodyContent" id="bodyContent">
+        <table>
+            <tr>
+                <td><label for="">Product's Name:</label></td>
+                <td><input type="text" placeholder="Product's name"></td>
+            </tr>
+            <tr>
+                <td><label for="">Price:</label></td>
+                <td><input type="number" placeholder="Price"></td>
+            </tr>
+            <tr>
+                <td><label for="">Picture:</label></td>
+                <td><input type="text" placeholder="Link"></td>
+            </tr>
+            <tr>
+                <td><label for="">ID:</label></td>
+                <td id="productID"></td>
+            </tr>
+            <tr>
+                <td><input type="button"></td>
+            </tr>
+        </table>
+    </div>
+    <!-- <img src="/IMG/lambo-1.jpg" alt=""> -->
 </body>
+<!-- <script src="/addProduct.js"></script> -->
 </html>

@@ -47,6 +47,7 @@ localStorage.setItem("listProduct", JSON.stringify(array));
 function renderProduct() {
   let list = "";
   let data = "";
+  
   for (let i = 0; i < array.length; i++) {
     list += `<div class="product col-4">
         <img src="${array[i].img}" alt="">
@@ -106,23 +107,23 @@ function renderProduct() {
           </div>
         </div>`;
   document.getElementById("header").innerHTML = data;
+  setInterval(bannerShow,2000);
   document.getElementById("body-content").innerHTML = list;
 }
 renderProduct();
-
 
 //! THÊM VÀO GIỎ HÀNG //
 function addToCart(id) {
   let cart = JSON.parse(localStorage.getItem("listProduct"));
   let myCart = localStorage.getItem("myCart");
 
-//   ? Nếu giỏ hàng đang rỗng  //
+  //   ? Nếu giỏ hàng đang rỗng  //
   if (myCart == null) {
     listProduct = [];
     for (let i = 0; i < cart.length; i++) {
-        let count = parseInt(cart[i].quantity)
+      let count = parseInt(cart[i].quantity);
       if (cart[i].id == id) {
-        count += parseInt(document.getElementById("input"+id).value)
+        count += parseInt(document.getElementById("input" + id).value);
         cart[i].quantity = count;
         listProduct.push(cart[i]);
         localStorage.setItem("myCart", JSON.stringify(listProduct));
@@ -136,33 +137,38 @@ function addToCart(id) {
     for (let i = 0; i < myProductCart.length; i++) {
       let a = parseInt(myProductCart[i].quantity);
 
-    //   TODO TH1: Nếu mặt hàng này đã có trong giỏ (Cộng số lượng) //
+      //   TODO TH1: Nếu mặt hàng này đã có trong giỏ (Cộng số lượng) //
       if (id == myProductCart[i].id) {
         flag = true;
         // myProductCart[i].quantity = ++a;
-        a += parseInt(document.getElementById("input"+id).value)
+        a += parseInt(document.getElementById("input" + id).value);
         myProductCart[i].quantity = a;
         localStorage.setItem("myCart", JSON.stringify(myProductCart));
         break;
       } else {
         // TODO TH2: Nếu mặt hàng này chưa có trong giỏ //
-        flag =false;
+        flag = false;
       }
     }
     if (flag == false) {
-    myProductCart.push(cart[id-1]);
+      myProductCart.push(cart[id - 1]);
       localStorage.setItem("myCart", JSON.stringify(myProductCart));
     }
   }
 }
 
+//! Ô tìm kiếm //
 let search = document.getElementById("search");
-search.addEventListener('change', ()=>{
+search.addEventListener("change", () => {
   let searchProduct = JSON.parse(localStorage.getItem("listProduct"));
-  let list = ""
-  for (let i=0; i<searchProduct.length; i++) {
-    if (searchProduct[i].name.toLowerCase().indexOf(search.value.toLowerCase()) != -1 || searchProduct[i].price == search.value) {
-        list += `<div class="product col-4">
+  let list = "";
+  for (let i = 0; i < searchProduct.length; i++) {
+    if (
+      searchProduct[i].name.toLowerCase().indexOf(search.value.toLowerCase()) !=
+        -1 ||
+      searchProduct[i].price == search.value
+    ) {
+      list += `<div class="product col-4">
             <img src="${searchProduct[i].img}" alt="">
             <p>${searchProduct[i].name}</p>
             <label for="price">Price: ${searchProduct[i].price}</label><br>
@@ -170,17 +176,35 @@ search.addEventListener('change', ()=>{
             <i onclick=addToCart(${searchProduct[i].id}) class="fa-solid fa-cart-shopping add-cart"></i>
             </div>
             `;
-            document.getElementById("body-content").innerHTML = list;
+      document.getElementById("body-content").innerHTML = list;
     }
   }
-})
+});
 
 //? Ô search //
-search.addEventListener('click',()=>{
-  if (search.value == ""){
+search.addEventListener("click", () => {
+  if (search.value == "") {
     search.placeholder = "Name of product or Price...";
   }
-})
-search.addEventListener('mouseout', ()=>{
-  search.placeholder = "Search..."; 
-})
+});
+search.addEventListener("mouseout", () => {
+  search.placeholder = "Search...";
+});
+
+
+//? SlideShow //
+let count = 0;
+function bannerShow(){
+  let arraySlideShow = [
+    "/IMG/anh1.png",
+    "/IMG/ferrari.jpg",
+    "/IMG/lambo-1.jpg",
+  ];
+  dataSlide = `
+    <img src="${arraySlideShow[count]}" alt="">`;
+  count++;
+  if (count == 3) {
+    count = 0;
+  }
+  document.getElementById('slideShow').innerHTML = dataSlide;
+}
