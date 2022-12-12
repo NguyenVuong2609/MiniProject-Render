@@ -130,6 +130,7 @@ function addToCart(id) {
         count += parseInt(document.getElementById("input" + id).value);
         cart[i].quantity = count;
         listProduct.push(cart[i]);
+        document.getElementById("input" + id).value = 0;
         localStorage.setItem("myCart", JSON.stringify(listProduct));
         break;
       }
