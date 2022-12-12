@@ -112,6 +112,7 @@ function renderProduct() {
   document.getElementById("header").innerHTML = data;
   setInterval(bannerShow, 3000);
   document.getElementById("body-content").innerHTML = list;
+  footer();
 }
 renderProduct();
 
@@ -155,7 +156,7 @@ function addToCart(id) {
       }
     }
     if (flag == false) {
-      let a = parseInt(cart[id - 1].quantity)
+      let a = parseInt(cart[id - 1].quantity);
       a += parseInt(document.getElementById("input" + id).value);
       cart[id - 1].quantity = a;
       myProductCart.push(cart[id - 1]);
@@ -218,6 +219,48 @@ function bannerShow() {
   document.getElementById("slideShow").innerHTML = dataSlide;
 }
 
+//? Footer //
+function footer() {
+  data = `
+  <div class="footer-info col-4">
+        <h3>CUTI<span>SHOP</span></h3>
+        <p>
+          CUTISHOP. - Holding company - A company under Vietnamese law, having
+          its official seat in Hanoi, register under number 0976106636.
+        </p>
+      </div>
+      <div class="footer-link col-3">
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Meet ups</a></li>
+        </ul>
+      </div>
+      <div class="footer-link col-3">
+        <ul>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">Handbook</a></li>
+          <li><a href="#">Held Desk</a></li>
+        </ul>
+      </div>
+      <div class="footer-link col-3">
+        <ul>
+          <li><a href="#">Find Designers</a></li>
+          <li><a href="#">Find Developers</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Meet ups</a></li>
+        </ul>
+      </div>
+    </div>
+`;
+      document.getElementById('footer').innerHTML = data;
+}
+
 //! Hiển thị giỏ hàng //
 //? Hide - Show //
 let btnCart = document.getElementById("cart-button");
@@ -230,7 +273,7 @@ btnCart.addEventListener("click", () => {
     visible.style.visibility =
       visible.style.visibility == "hidden" ? "visible" : "hidden";
   }
-  if (cart != ""){
+  if (cart != "") {
     showCart();
     totalCart();
   }
@@ -264,18 +307,18 @@ function showCart() {
 }
 
 //* Hiển thị tổng sản phẩm //
-function totalCart(){
+function totalCart() {
   let cart = JSON.parse(localStorage.getItem("myCart"));
   let sum = 0;
   let total = 0;
-  for(let i=0; i<cart.length; i++){
+  for (let i = 0; i < cart.length; i++) {
     sum += cart[i].quantity;
-    total += (cart[i].quantity * cart[i].price)
+    total += cart[i].quantity * cart[i].price;
   }
-  document.getElementById('small').innerHTML = sum;
-  document.getElementById("totalCart").innerHTML ="Total product: " + sum + "&nbsp&nbsp Total money: " + total;
+  document.getElementById("small").innerHTML = sum;
+  document.getElementById("totalCart").innerHTML =
+    "Total product: " + sum + "&nbsp&nbsp Total money: " + total;
 }
-
 
 //! Xóa giỏ hàng //
 let btnDelete = document.getElementById("deleteCart");

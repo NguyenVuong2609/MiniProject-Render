@@ -213,6 +213,8 @@ i {
   #pay-money:hover {
     background-color: #ffb0af;
   }
+
+  /*? Slideshow */
   .slide {
     margin-top: 80px;
     text-align: center;
@@ -235,7 +237,47 @@ i {
   width: 60px;
  }
  
- 
+ /*? Footer */
+ .footer {
+  font-family: "Courier New", Courier, monospace;
+  margin-top: 20px;
+  padding: 5px;
+  display: flex;
+}
+.footer h3 span {
+  color: #ff8380;
+}
+.footer-info {
+  padding-left: 20px;
+  padding-right: 30px;
+  text-align: center;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 30px;
+}
+.copyright a {
+  text-decoration: none;
+  padding-left: 2px;
+  color: #ff8380;
+}
+.footer-link li {
+  display: block;
+}
+.footer-link a {
+  text-decoration: none;
+  color: wheat;
+}
+.footer-link a:hover {
+  border-bottom: 1px solid wheat;
+}
+.footer-link {
+  padding-left: 20px;
+}
+
+
+
  
  
   @media only screen and (max-width: 768px) {
